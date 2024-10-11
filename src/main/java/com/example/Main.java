@@ -17,12 +17,19 @@ public class Main {
         BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
         DataOutputStream out = new DataOutputStream(s.getOutputStream());
 
-        Scanner scanner = new Scanner(System.in);
-        String stringaInviata = scanner.nextLine();
-        out.writeBytes(stringaInviata + "\n");
+        String stringaInviata;
 
-        String stringRicevuta = in.readLine();
-        System.out.println(stringRicevuta);
+        do{
+            Scanner scanner = new Scanner(System.in);
+            stringaInviata = scanner.nextLine();
+            out.writeBytes(stringaInviata + "\n");
+            String stringRicevuta = in.readLine();
+            
+            if(!stringaInviata.equals("!")){
+                System.out.println(stringRicevuta);
+            }
+        }while(!stringaInviata.equals("!"));
+        
 
         s.close();
     }
